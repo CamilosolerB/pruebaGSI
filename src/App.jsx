@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Routes, Route, data } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import { Sidebar } from './components/Siderbar';
 import Doctores from './components/Doctores';
 import CrearDoctor from './components/CrearDoctor';
@@ -28,7 +28,7 @@ function App() {
   return (
     <Container fluid>
       <Row>
-        <Col xs={2}>
+        <Col xs={2} style={{paddingLeft: 0}}>
           <Sidebar />
         </Col>
         <Col xs={10} className="p-4">
