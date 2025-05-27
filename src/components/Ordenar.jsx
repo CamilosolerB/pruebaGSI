@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Container, Form, FormControl, Table } from 'react-bootstrap'; 
-//
+
 export const Ordenar = ({ moves }) => {
     const [buscar, setBuscar] = useState('');
     const [movimientos, setMovimientos] = useState([]);
