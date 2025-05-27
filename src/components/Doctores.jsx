@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { BsFillEyeFill, BsFillTrashFill } from "react-icons/bs";
 import { Table, Button, Modal } from 'react-bootstrap';
 
 const Doctores = ({ doctores, onEliminarDoctor }) => {
@@ -14,6 +15,7 @@ const Doctores = ({ doctores, onEliminarDoctor }) => {
 
     return (
         <>
+            <h1 className='text-center'>Doctores registrados</h1>
             <Table striped bordered hover>
                 <thead>
                     <tr>
@@ -22,6 +24,9 @@ const Doctores = ({ doctores, onEliminarDoctor }) => {
                         <th>Apellido</th>
                         <th>Email</th>
                         <th>Teléfono</th>
+                        <th>CIudad</th>
+                        <th>Direccion</th>
+                        <th>Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -32,20 +37,11 @@ const Doctores = ({ doctores, onEliminarDoctor }) => {
                             <td>{doctor.apellido}</td>
                             <td>{doctor.email}</td>
                             <td>{doctor.telefono}</td>
+                            <td>{doctor.ciudad}</td>
+                            <td>{doctor.direccion}</td>
                             <td>
-                                <Button
-                                    variant="info"
-                                    className="me-2"
-                                    onClick={() => handleShow(doctor)}
-                                >
-                                    Ver Detalles
-                                </Button>
-                                <Button
-                                    variant="danger"
-                                    onClick={() => onEliminarDoctor(idx)}
-                                >
-                                    Eliminar
-                                </Button>
+                                <BsFillEyeFill onClick={() => handleShow(doctor)}/>
+                                <BsFillTrashFill onClick={() => onEliminarDoctor(idx)}/>
                             </td>
                         </tr>
                     ))}
@@ -60,10 +56,36 @@ const Doctores = ({ doctores, onEliminarDoctor }) => {
                     {doctorSeleccionado && (
                         <>
                             <p>
+                                <strong>Documento:</strong> {doctorSeleccionado.documento}
+                            </p>
+                            <p>
                                 <strong>Nombre:</strong> {doctorSeleccionado.nombre}
                             </p>
                             <p>
-                                <strong>Especialidad:</strong> {doctorSeleccionado.especialidad}
+                                <strong>Apellido:</strong> {doctorSeleccionado.apellido}
+                            </p>
+                            <p>
+                                <strong>Correo-e:</strong> {doctorSeleccionado.email}
+                            </p>
+                            <p>
+                                <strong>Telefono:</strong> {doctorSeleccionado.telefono}
+                            </p>
+                            <p>
+                                <strong>Genero:</strong> {doctorSeleccionado.genero}
+                            </p>
+                            <hr />
+                            <h3>Locacion</h3>
+                            <p>
+                                <strong>Pais:</strong> {doctorSeleccionado.pais}
+                            </p>
+                            <p>
+                                <strong>Departamento:</strong> {doctorSeleccionado.departamento}
+                            </p>
+                            <p>
+                                <strong>Ciudad:</strong> {doctorSeleccionado.ciudad}
+                            </p>
+                            <p>
+                                <strong>Direccion:</strong> {doctorSeleccionado.direccion}
                             </p>
                         </>
                     )}

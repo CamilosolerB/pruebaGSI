@@ -7,22 +7,32 @@ const CrearDoctor = ({ onAgregarDoctor }) => {
   const [documento, setDocumento] = useState('');
   const [email, setEmail] = useState('');
   const [telefono, setTelefono] = useState('');
+  const [pais, setPais] = useState('');
+  const [departamento, setDepartamento] = useState('');
+  const [ciudad, setCiudad] = useState('');
+  const [direccion, setDireccion] = useState('');
+  const [genero, setGenero] = useState('');
 
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (nombre && apellido && documento && email && telefono) {
-      onAgregarDoctor({ nombre, apellido, documento, email, telefono });
+    if (nombre && apellido && documento && email && telefono && ciudad && direccion && pais && departamento) {
+      onAgregarDoctor({ nombre, apellido, documento, email, telefono, ciudad, direccion, pais, departamento, genero });
       setNombre('');
       setApellido('');
       setDocumento('');
       setEmail('');
       setTelefono('');
+      setCiudad('');
+      setDireccion('');
+      setPais('');
+      setDepartamento('');
     }
   };
 
   return (
-    <Form onSubmit={handleSubmit}>
+    <Form onSubmit={handleSubmit} className='card p-4'>
+      <h1 className='text-center'>Formulario doctor</h1>
       <Form.Group>
         <Form.Label>Documento</Form.Label>
         <Form.Control type="text"value={documento} onChange={e => setDocumento(e.target.value)} required/>
@@ -43,6 +53,31 @@ const CrearDoctor = ({ onAgregarDoctor }) => {
         <Form.Label>Teléfono</Form.Label>
         <Form.Control type="tel" value={telefono} onChange={e => setTelefono(e.target.value)} required />
       </Form.Group>
+      <Form.Group>
+      <Form.Group>
+        <Form.Label>Pais</Form.Label>
+        <Form.Control type="text" value={pais} onChange={e => setPais(e.target.value)} required />
+      </Form.Group>
+      <Form.Group>
+        <Form.Label>Departamento / Provincia</Form.Label>
+        <Form.Control type="text" value={departamento} onChange={e => setDepartamento(e.target.value)} required />
+      </Form.Group>
+        <Form.Label>Ciudad</Form.Label>
+        <Form.Control type="text" value={ciudad} onChange={e => setCiudad(e.target.value)} required />
+      </Form.Group>
+      <Form.Group>
+        <Form.Label>Direccion</Form.Label>
+        <Form.Control type="text" value={direccion} onChange={e => setDireccion(e.target.value)} required />
+      </Form.Group>
+      <Form.Group>
+        <Form.Label>Genero</Form.Label>
+        <Form.Select value={genero} onChange={e => setGenero(e.target.value)}>
+          <option value="Maculino">Masculino</option>
+          <option value="Femenino">Femenino</option>
+          <option value="No binario">No binario</option>
+        </Form.Select>
+      </Form.Group>
+      
       <Button type="submit" className="mt-2">Agregar Doctor</Button>
     </Form>
   );
